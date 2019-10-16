@@ -1,4 +1,5 @@
-
+import tyres as ty                  # Includes tyre movements
+import camera as cam                # Includes camera functions
 
 camOK = False                       # setup booleans, always False at start
 motor = False
@@ -59,10 +60,7 @@ def main():
 
 
 
-            
-
-
-
+          
 
 def setup():                            #Returns booleans as True if camera and motors are ok and in position 
     if camcheck == 1:                   #check for camera
@@ -75,11 +73,6 @@ def setup():                            #Returns booleans as True if camera and 
     if servocheck == 1:                 #check for Servo motors and resetting them to original position
         servos = True
         return servos
-
-def tyres():                            # Function for movement
-   
-    #tyre DC motor config
-       tyre = tyre
 
 
 def servomvmnt(): #Turret turn
