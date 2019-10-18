@@ -1,10 +1,14 @@
-import RPi.GPIO as GPIO
+import RPi.GPIO as gpio
 from time import sleep
 
-GPIO.setmode(GPIO.BOARD)
-GPIO.setup(11, GPIO_OUT)
+gpio.setmode(gpio.BCM)
+gpio.setup(11, gpio.OUT)
 
 def solenoidburst():
-    GPIO.output(11, True)
+    
+    gpio.output(11, True)
     sleep(1)
-    GPIO.output(11, False)
+    gpio.output(11, False)
+    
+    gpio.cleanup()
+    

@@ -1,13 +1,14 @@
-import tyres as ty                  # Includes tyre movements
-import camera as cam                # Includes camera functions
-import solenoid as sol              # Function for solenoid burst, "trigger"
+#import tyres as ty                  # Includes tyre movements
+#import camera as cam                # Includes camera functions
+#import solenoid as sol              # Function for solenoid burst, "trigger"
+import FireAtWill as fire           # Launch function
+import LocknLoad as load            # Load function
 
 from time import sleep
 
 camOK = False                       # setup booleans, always False at start
 motor = False
 servos = False
-dartrdy = False
 
 
 
@@ -52,13 +53,11 @@ def main():
     else:                              # Shooting happens only if camera and motors are ok
         if DartCount < 4:              # and Dart count is lower than 4, meaning 1, 2, or 3
             if dartrdy == False:
-                LocknLoad()
+                load.LocknLoad
             if dartrdy == True: 
-                FireAtWill()
+                fire.FireAtWill()
         else:                          # if DartCount would be 4, or anything else shooting won't happen
             ShutDown()
-
-
 
 
 
