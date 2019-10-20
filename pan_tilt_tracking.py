@@ -142,10 +142,10 @@ if __name__ == "__main__":
         tiltD = manager.Value("f", 0.002)
 
         # we have 4 independent processes
-        # 1. objectCenter  - finds/localizes the object
-        # 2. panning       - PID control loop determines panning angle
-        # 3. tilting       - PID control loop determines tilting angle
-        # 4. setServos     - drives the servos to proper angles based
+        # 1. ObjectCenter  - finds/localizes the object
+        # 2. Panning       - PID control loop determines panning angle
+        # 3. Tilting       - PID control loop determines tilting angle
+        # 4. SetServos     - drives the servos to proper angles based
         #                    on PID feedback to keep object in center
         processObjectCenter = Process(target=obj_center,
             args=(args, objX, objY, centerX, centerY))
@@ -167,6 +167,6 @@ if __name__ == "__main__":
         processTilting.join()
         processSetServos.join()
 
-        # Disable the servos. Normal code, might not need to disable
+        # Disable the servos. Orig. code, might not need to disable
         pth.servo_enable(1, False)
         pth.servo_enable(2, False)
