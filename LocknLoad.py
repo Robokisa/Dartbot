@@ -1,19 +1,20 @@
 import RPi.GPIO as gpio
 from time import sleep
 
-dartrdy = False
 
-gpio.setmode(gpio.BCM)
+gpio.setwarnings(False)
 
-gpio.setup(7, gpio.OUT)                 # Stepper motor pins
-gpio.setup(8, gpio.OUT)
-gpio.setup(9, gpio.OUT)
-gpio.setup(10, gpio.OUT)
+gpio.setmode(gpio.BOARD)
 
-def LocknLoad():                        # Dart is laoded to the chamber ready to shoot
+
+gpio.setup(22, gpio.OUT)                 # Stepper motor pins
+gpio.setup(23, gpio.OUT)
+gpio.setup(24, gpio.OUT)
+gpio.setup(26, gpio.OUT)
+
+def LocknLoad(Debug, dartrdy):                        # Dart is laoded to the chamber ready to shoot
         
         #stepper motor control here
-        
-        dartrdy = True
-        
-        gpio.cleanup()
+        if Debug == True:
+            if dartrdy == True:
+                print("dartrdy is ", dartrdy)

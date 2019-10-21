@@ -1,19 +1,30 @@
 import RPi.GPIO as gpio
 import solenoid as sol
 from time import sleep
+gpio.setwarnings(False)
 
-gpio.setmode(gpio.BCM)
-gpio.setup(6, gpio.OUT)               # Launch motor pin
+gpio.setmode(gpio.BOARD)
+gpio.setup(7, gpio.OUT)               # Launch motor pin
 
-Fire = False
 
-def FireAtWill():                       # Shooting function
-          gpio.output(6, True)
-          sleep(5)
-          sol.solenoidburst()           # After waiting 5 seconds solenoid burst will fire the dart
 
-          gpio.output(6, False)
-          dartrdy = False
+def FireAtWill(Debug, dartrdy, DartCount):                       # Shooting function
+        gpio.output(7, True)
           
-          DartCount = DartCount + 1
-          gpio.cleanup()
+        if Debug == True:    
+            if gpio.input(7):
+                print("port 7 is HIGH")
+                  
+        sleep(5)
+        sol.solenoidburst(Debug)           # After waiting 5 seconds solenoid burst will fire the dart
+
+        gpio.output(7, False)
+          
+        if Debug == True:    
+            if not gpio.input(7):
+                print("port 7 is LOW")
+                
+        
+        if Debug == True:
+            print("dartrdy is ", dartrdy)
+            print("DartCount is ", DartCount)

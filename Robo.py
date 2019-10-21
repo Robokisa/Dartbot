@@ -1,19 +1,22 @@
-#import tyres as ty                  # Includes tyre movements
+import tyres as ty                  # Includes tyre movements
 #import camera as cam                # Includes camera functions
-#import solenoid as sol              # Function for solenoid burst, "trigger"
+import solenoid as sol              # Function for solenoid burst, "trigger"
 import FireAtWill as fire           # Launch function
 import LocknLoad as load            # Load function
+import RPi.GPIO as gpio
 
 from time import sleep
+
+Debug = True
 
 camOK = False                       # setup booleans, always False at start
 motor = False
 servos = False
 
+dartrdy = False
 
-
-
-DartCount = 1                       # Dart counter, in this solution max dart count is 3
+DartCount = 1 
+                      # Dart counter, in this solution max dart count is 3
 
 
 # Alustus
@@ -45,20 +48,22 @@ DartCount = 1                       # Dart counter, in this solution max dart co
 
 
 def main():
-    print("setup")
-    if camOK == False:
-        
-        setup()
-    
-    else:                              # Shooting happens only if camera and motors are ok
-        if DartCount < 4:              # and Dart count is lower than 4, meaning 1, 2, or 3
-            if dartrdy == False:
-                load.LocknLoad
-            if dartrdy == True: 
-                fire.FireAtWill()
-        else:                          # if DartCount would be 4, or anything else shooting won't happen
-            ShutDown()
+    global Debug
+    global DartCount                             # Shooting happens only if camera and motors are ok
+    global dartrdy
+    if DartCount < 4:              # and Dart count is lower than 4, meaning 1, 2, or 3
 
+        if dartrdy == False:
+            dartrdy = True
+            load.LocknLoad(Debug, dartrdy)
+        
+        if dartrdy == True:
+            dartrdy = False
+            fire.FireAtWill(Debug, dartrdy, DartCount)
+            DartCount = DartCount + 1
+    else:                          # if DartCount would be 4, or anything else shooting won't happen
+        ShutDown()
+    
 
 
 
@@ -73,47 +78,13 @@ def setup():                            #Returns booleans as True if camera and 
         camOK = True
         return camOK
 
-    if motorcheck == 1:                 #check for DC motors
-        motor = True
-        return motor
-    if servocheck == 1:                 #check for Servo motors and resetting them to original position
-        servos = True
-        return servos
-
-
-def servomvmnt(): #Turret turn
-    
-     #Servo movement config
-     servo = servo
-
-
-def LocknLoad():                        # Dart is laoded to the chamber ready to shoot
-
-    DartCount = DartCount + 1           # Dart counter, shooting stops after dart number 3 
-    return DartCount
-
-    if DartCount < 4:
-        motor1 = 0                      # Motors are spun backwards to make sure that there is no misfire
-        motor2 = 1
-        time.sleep(5)
-        dartrdy = True                 # After loading is done return ready state for fireing
-        return dartrdy
-
-    if DartCount == 4:
-        ShutDown()
-
-    
-def FireAtWill():                       # Shooting function
-      if DartCount < 4 and dartrdy == True:
-          motor1 = 1                    # Motors are spun in advance to have them at full speed before fireing
-          motor2 = 0
-          time.sleep(5)
-          sol.solenoidburst()                  # After waiting 5 seconds solenoid burst will fire the dart
-          dartrdy = False
-          return dartrdy
-
-
 
 def ShutDown():                         # After successfully fired 3 darts
     # DOES WHATEVER DARTBOT DOES
-    loppu == loppu
+    while(1):
+        print("DartCount is ", DartCount)
+        print("LOPPU")
+        sleep(1000000)
+
+while(1):
+    main()
