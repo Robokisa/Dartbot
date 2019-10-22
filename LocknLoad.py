@@ -1,6 +1,6 @@
 import RPi.GPIO as gpio
 from time import sleep
-
+import stepper_motor as step
 
 gpio.setwarnings(False)
 
@@ -14,7 +14,7 @@ gpio.setup(26, gpio.OUT)
 
 def LocknLoad(Debug, dartrdy):                        # Dart is laoded to the chamber ready to shoot
         
-        #stepper motor control here
+#        step.steppermotor()
         if Debug == True:
             if dartrdy == True:
                 print("dartrdy is ", dartrdy)

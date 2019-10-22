@@ -7,7 +7,6 @@ gpio.setmode(gpio.BOARD)
 gpio.setup(7, gpio.OUT)               # Launch motor pin
 
 
-
 def FireAtWill(Debug, dartrdy, DartCount):                       # Shooting function
         gpio.output(7, True)
           

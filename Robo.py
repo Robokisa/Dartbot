@@ -4,6 +4,9 @@ import solenoid as sol              # Function for solenoid burst, "trigger"
 import FireAtWill as fire           # Launch function
 import LocknLoad as load            # Load function
 import RPi.GPIO as gpio
+#import stepper_motor as step
+
+import setupfile
 
 from time import sleep
 
@@ -19,35 +22,29 @@ DartCount = 1
                       # Dart counter, in this solution max dart count is 3
 
 
-# Alustus
-# Kameran tarkistus
-# Ajo- ja ampumamoottoreiden tarkistus
-# Servot nollaan
-# Magneettirele
+
+def main_move():
+    if camOK == 0:     # Camera sends constant data about target, if not found car turns 90 degrees
+        servosweep()   # at a time and does new servo sweep to find the target
+            if camOK == 0:
+                while camOK == 0:
+                    carTurn()
+                    servosweep()
+    
+    if camOK == 1:    # once camera finds the target the car will be moved to 90 degree angle
+        readServo()
+        #LIIKUTETAAN AUTOA SERVON PERUSTEELLA
+        
+        if angleOK == 1:  # Once the angle is 90 degrees range is measured
+            readServo()   # and car is moved accordingly
+            #käännä auto oikein päin
+            #Liikutetaan eteen tai taakse
+        
+            if rangeOK == 1: # When range is ok the fire command will be given
+                fireOK = 1:
 
 
-# def renkaat
-# Rengasfunktio 
-# Tehty
-
-# def servot
-# Määritykset tähtäykseen
-
-# def lataa
-# Moottorit taakse
-# Monesko tikka? Jos 2. tai 3 niin stepper
-
-# def Laukaisu
-# Moottorit eteen
-# Solenoidi purskaus
-# Lähtikö?
-
-# def lopetus
-# Jos kolmas tikka
-# ???
-
-
-def main():
+def main_fire():
     global Debug
     global DartCount                             # Shooting happens only if camera and motors are ok
     global dartrdy
@@ -61,6 +58,7 @@ def main():
             dartrdy = False
             fire.FireAtWill(Debug, dartrdy, DartCount)
             DartCount = DartCount + 1
+            sleep(5)
     else:                          # if DartCount would be 4, or anything else shooting won't happen
         ShutDown()
     
@@ -86,5 +84,8 @@ def ShutDown():                         # After successfully fired 3 darts
         print("LOPPU")
         sleep(1000000)
 
-while(1):
-    main()
+if fireOK == 1:
+    main_fire()
+else fireOK == 0:
+    main_move()
+
