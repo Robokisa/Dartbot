@@ -37,7 +37,47 @@ def oikealle():
     gpio.output(M3, False)
     gpio.output(M4, True)
 
-def carTurn():
+def carTurnO():
     #oikealle 90 astetta kerrallaan
     oikealle()
     sleep(" ")
+    
+def carTurnV():
+    #vasemmalle 90 astetta kerrallaan
+    vasemmalle()
+    sleep(" ")
+    
+def carTurnO120():
+    #oikealle 20 astetta kerrallaan
+    oikealle()
+    sleep(" ")
+    
+def carTurnO140():
+    #oikealle 40 astetta kerrallaan
+    oikealle()
+    sleep(" ")
+    
+def carTurnO160():
+    #oikealle 60 astetta kerrallaan
+    oikealle()
+    sleep(" ")
+    
+def carTurnV20():
+    #vasemmalle 20 astetta kerrallaan
+    vasemmalle()
+    sleep(" ")
+    
+def carTurnV40():
+    #vasemmalle 40 astetta kerrallaan
+    vasemmalle()
+    sleep(" ")
+    
+ def carTurnV60():
+    #vasemmalle 60 astetta kerrallaan
+    vasemmalle()
+    sleep(" ")
+    
+   
+   
+  
+    
