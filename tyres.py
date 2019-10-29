@@ -1,41 +1,29 @@
 import RPi.GPIO as gpio
-from time import sleep
+import time
 
-M1 = 21
-M2 = 19
-M3 = 18
-M4 = 16
+MO = 12
+MV = 13
+
 
 gpio.setmode(gpio.BOARD)
 
-gpio.setup(M1, gpio.OUT)
-gpio.setup(M2, gpio.OUT)
-gpio.setup(M3, gpio.OUT)
-gpio.setup(M4, gpio.OUT)
+gpio.setup(MO, gpio.OUT)
+gpio.setup(MV, gpio.OUT)
+
 
 def eteen():
-    gpio.output(M1, False)
-    gpio.output(M2, True) 
-    gpio.output(M3, True)
-    gpio.output(M4, False)
-
-def taakse():
-    gpio.output(M1, True)
-    gpio.output(M2, False)
-    gpio.output(M3, False)
-    gpio.output(M4, True)
+    gpio.output(MO, True)
+    gpio.output(MV, True) 
 
 def vasemmalle():
-    gpio.output(M1,  True)
-    gpio.output(M2, False)
-    gpio.output(M3, True )
-    gpio.output(M4, False)
+    gpio.output(MO,  True)
+    gpio.output(MV, False)
+    
 
 def oikealle():
-    gpio.output(M1,  False)
-    gpio.output(M2, True)
-    gpio.output(M3, False)
-    gpio.output(M4, True)
+    gpio.output(MO,  False)
+    gpio.output(MV, True)
+   
 
 def carTurnO():
     #oikealle 90 astetta kerrallaan
