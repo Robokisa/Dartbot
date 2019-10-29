@@ -10,10 +10,13 @@ gpio.setmode(gpio.BOARD)
 gpio.setup(MO, gpio.OUT)
 gpio.setup(MV, gpio.OUT)
 
+eteen()
+
 
 def eteen():
     gpio.output(MO, True)
     gpio.output(MV, True) 
+    sleep(5)
 
 def vasemmalle():
     gpio.output(MO,  True)
