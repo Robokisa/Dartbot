@@ -16,7 +16,7 @@ for pin in control_pins:
     [1,0,0,1]
 ]
 def steppermotor(): 
-    for i in range(512):
+    for i in range(200):
         for halfstep in range(8):
             for pin in range(4):
                 gpio.output(control_pins[pin],halfstep_seq[halfstep][pin])
