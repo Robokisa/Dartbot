@@ -4,7 +4,7 @@ import time
 # Variables
 
 delay = 0.0055
-steps = 500
+steps = 200
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
