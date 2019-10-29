@@ -11,15 +11,15 @@ GPIO.setwarnings(False)
 
 # Enable GPIO pins for  ENA and ENB for stepper
 
-enable_a = 18
-enable_b = 22
+enable_a = 6
+enable_b = 5
 
 # Enable pins for IN1-4 to control step sequence
 
-coil_A_1_pin = 23
-coil_A_2_pin = 24
-coil_B_1_pin = 4
-coil_B_2_pin = 17
+coil_A_1_pin = 15
+coil_A_2_pin = 29
+coil_B_1_pin = 31
+coil_B_2_pin = 37
 
 # Set pin states
 
