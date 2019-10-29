@@ -1,7 +1,7 @@
 import RPi.GPIO as gpio
 gpio.setmode(gpio.BOARD)
 
-control_pins = [7,11,13,15]
+control_pins = [15,29,31,37]
 for pin in control_pins:
     gpio.setup(pin, gpio.OUT)
     #gpio.output(pin, 0)
