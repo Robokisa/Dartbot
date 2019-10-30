@@ -23,8 +23,16 @@ pwm2.start(50)
 
 def eteen():
     gpio.output(MO1, True)
-    gpio.output(MO2, True) 
+    gpio.output(MO2, False) 
     gpio.output(MV1, True) 
+    gpio.output(MV2, False) 
+    gpio.output(ENO, True)
+    gpio.output(ENV, True)
+    
+ def taakse():
+    gpio.output(MO1, False)
+    gpio.output(MO2, True) 
+    gpio.output(MV1, False) 
     gpio.output(MV2, True) 
     gpio.output(ENO, True)
     gpio.output(ENV, True)
@@ -32,19 +40,19 @@ def eteen():
 
 def vasemmalle():
     gpio.output(MO1, True)
-    gpio.output(MO2, True)
+    gpio.output(MO2, False)
     gpio.output(MV1, False) 
-    gpio.output(MV2, False) 
+    gpio.output(MV2, True) 
     gpio.output(ENO, True)
-    gpio.output(ENV, False)
+    gpio.output(ENV, True)
     
 
 def oikealle():
     gpio.output(MO1, False) 
-    gpio.output(MO2, False) 
+    gpio.output(MO2, True) 
     gpio.output(MV1, True)
-    gpio.output(MV2, True)
-    gpio.output(ENO, False)
+    gpio.output(MV2, False)
+    gpio.output(ENO, True)
     gpio.output(ENV, True)
    
 
