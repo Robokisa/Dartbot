@@ -6,7 +6,7 @@ import time
 delay = 0.0055
 steps = 200
 
-GPIO.setmode(GPIO.BCM)
+GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
 
 # Enable GPIO pins for  ENA and ENB for stepper
