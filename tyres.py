@@ -1,31 +1,51 @@
 import RPi.GPIO as gpio
 import time
 
-MO = 12
-MV = 13
+MO1 = 12
+MO2 =
+MV1 = 13
+MV2 =
+ENO =
+ENV =
 
 
-gpio.setmode(gpio.BOARD)
+gpio.setmode(gpio.BCM)
 
-gpio.setup(MO, gpio.OUT)
-gpio.setup(MV, gpio.OUT)
+gpio.setup(MO1, gpio.OUT)
+gpio.setup(MO2, gpio.OUT)
+gpio.setup(MV1, gpio.OUT)
+gpio.setup(MV2, gpio.OUT)
 
-eteen()
-
+pwm1=GPIO.PWM(EN0,100)
+pwm2=GPIO.PWM(ENV,100)
+pwm1.start(50)
+pwm2.start(50)
 
 def eteen():
-    gpio.output(MO, True)
-    gpio.output(MV, True) 
-    sleep(5)
+    gpio.output(MO1, True)
+    gpio.output(MO2, True) 
+    gpio.output(MV1, True) 
+    gpio.output(MV2, True) 
+    gpio.output(ENO, True)
+    gpio.output(ENV, True)
+
 
 def vasemmalle():
-    gpio.output(MO,  True)
-    gpio.output(MV, False)
+    gpio.output(MO1, True)
+    gpio.output(MO2, True)
+    gpio.output(MV1, False) 
+    gpio.output(MV2, False) 
+    gpio.output(ENO, True)
+    gpio.output(ENV, False)
     
 
 def oikealle():
-    gpio.output(MO,  False)
-    gpio.output(MV, True)
+    gpio.output(MO1, False) 
+    gpio.output(MO2, False) 
+    gpio.output(MV1, True)
+    gpio.output(MV2, True)
+    gpio.output(ENO, False)
+    gpio.output(ENV, True)
    
 
 def carTurnO():
