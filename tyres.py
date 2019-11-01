@@ -1,12 +1,12 @@
 import RPi.GPIO as gpio
 import time
 
-MO1 = 12
-MO2 =
-MV1 = 13
-MV2 =
-ENO =
-ENV =
+MO1 = 12    #oikea etu
+MO2 =       #oikea taka   
+MV1 = 13    #Vasen etu
+MV2 =       #Vasen taka
+ENO =       #Enable oikea
+ENV =       #Enable vasen
 
 
 gpio.setmode(gpio.BCM)
@@ -57,7 +57,7 @@ def oikealle():
    
 
 def carTurnO():
-    #oikealle 90 astetta kerrallaan
+    #oikealle 90 astetta kerrallaan Eli servon kulma on silloin lähellä 0 tai 180 
     oikealle()
     sleep(" ")
     
