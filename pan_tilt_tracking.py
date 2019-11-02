@@ -10,15 +10,10 @@ from pyimagesearch.pid import PID
 from time import sleep
 import Robo as rob
 #import DistanceCalculation as DC
-import argparse 
-import signal 
-import time 
-import sys 
-import cv2 
+import argparse, signal, time, sys, cv2 
  
 # Define the range for the motors, check more appropriate values later 
 servoRange = (-65, 65, -65, -20) 
-#kit = ServoKit(channels=16) 
 
 import RPi.GPIO as GPIO
 import pigpio
