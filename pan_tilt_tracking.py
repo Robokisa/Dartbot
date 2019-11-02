@@ -29,7 +29,7 @@ us_min = 1000
 us_max = 2000 
 panAngle = 0
 tltAngle = -25
-turn = 0
+turn, PA = 0
  
 def setServoAngle(servo, angle): 
         angle += 65
