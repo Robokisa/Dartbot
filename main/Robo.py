@@ -6,7 +6,6 @@ import LocknLoad as load            # Load function
 import RPi.GPIO as gpio
 #import stepper_motor as step
 
-#import setupfile
 
 from time import sleep
 
