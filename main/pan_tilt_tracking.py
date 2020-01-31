@@ -1,6 +1,3 @@
-# USAGE 
-# python3 pan_tilt_tracking.py --cascade haarcascade_frontalface_default.xml 
- 
 # import necessary packages 
 from multiprocessing import Manager 
 from multiprocessing import Process 
@@ -26,6 +23,7 @@ panAngle = 0
 tltAngle = -25
 turn, PA = 0
  
+# Function to convert micro seconds to degrees in servo control
 def setServoAngle(servo, angle): 
         angle += 65
         servo_range = us_max - us_min
@@ -164,7 +162,7 @@ while __name__ == "__main__":
             tiltI = manager.Value("f", 0.10) 
             tiltD = manager.Value("f", 0.002) 
      
-            # we have 4 independent processes 
+            # We have 4 independent processes 
             # 1. objectCenter  - finds/localizes the object 
             # 2. panning       - PID control loop determines panning angle 
             # 3. tilting       - PID control loop determines tilting angle 
@@ -190,7 +188,7 @@ while __name__ == "__main__":
             processTilting.join() 
             processSetServos.join() 
      
-            # Disable the servos. Normal code, might not need to disable 
+            # Disable the servos. Not needed in running of the bot.
             #pth.servo_enable(1, False) 
             #pth.servo_enable(2, False) '
         except KeyboardInterrupt:
